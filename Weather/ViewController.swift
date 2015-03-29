@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBOutlet var webView: UIWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,18 +25,49 @@ class ViewController: UIViewController {
             if error == nil {
                 var urlContent = NSString(data: data, encoding: NSUTF8StringEncoding)
                 println(urlContent)
-            } else {
-                println("You have no internet connection")
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.webView.loadHTMLString(urlContent!, baseURL: nil)
+                }
             }
         }
-            task.resume()
+        task.resume()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
