@@ -20,7 +20,8 @@ class ViewController: UIViewController {
             (data, response, error) in
             
             if error == nil {
-                println(data)
+                var urlContent = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println(urlContent)
             } else {
                 println("You have no internet connection")
             }
